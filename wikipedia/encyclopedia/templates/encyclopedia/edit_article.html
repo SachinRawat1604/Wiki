@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Article: {{ article.title }}</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'encyclopedia/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Edit Article: {{ article.title }}</h1>
+        <nav>
+            <a href="{% url 'index' %}">Back to Index</a>
+        </nav>
+    </header>
+    <div class="container">
+        <form method="post">
+            {% csrf_token %}
+            <label for="title">Title:</label>
+            <input type="text" name="title" value="{{ article.title }}" required>
+            <label for="content">Content:</label>
+            <textarea name="content" required>{{ article.content }}</textarea>
+            <button type="submit">Save Changes</button>
+        </form>
+    </div>
+</body>
+</html>

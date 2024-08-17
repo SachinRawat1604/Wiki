@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Article: {{ article.title }}</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'encyclopedia/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Delete Article: {{ article.title }}</h1>
+        <nav>
+            <a href="{% url 'index' %}">Back to Index</a>
+        </nav>
+    </header>
+    <div class="container">
+        <p>Are you sure you want to delete the article "{{ article.title }}"?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Confirm Delete</button>
+        </form>
+        <a href="{% url 'article_detail' article.title %}">Cancel</a>
+    </div>
+</body>
+</html>

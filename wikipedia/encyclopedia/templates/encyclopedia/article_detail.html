@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ article.title }}</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'encyclopedia/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>{{ article.title }}</h1>
+        <nav>
+            <a href="{% url 'index' %}">Back to Index</a>
+            <a href="{% url 'edit_article' article.title %}">Edit</a>
+            <a href="{% url 'delete_article' article.title %}">Delete</a>
+        </nav>
+    </header>
+    <div class="container">
+        <article>
+            <p>{{ article.content }}</p>
+        </article>
+    </div>
+</body>
+</html>
